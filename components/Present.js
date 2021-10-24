@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { View,Text,ActivityIndicator} from 'react-native';
 
-export const Present = ({route}) =>{
+
+export const Present = ({navigation,route}) =>{
     const { itemId, otherParam } = route.params;
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const getMovies = async () => {
         try {
-         const response = await fetch(`http://giftcity.kz/api/v1/present/${JSON.stringify(itemId)}`);
+         const response = await fetch(`http://giftcity.kz/api/v1/present/${route.params.Id}`);
          const json = await response.json();
          setData(json);
        } catch (error) {
@@ -27,6 +28,7 @@ export const Present = ({route}) =>{
        <View style={{padding: 30}}>
     <Text style={{marginTop:20}} >{data.id}</Text>
     <Text>{data.name_precent}</Text>
+    
     </View>
     )}
     </View>

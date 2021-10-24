@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { View,Button,Image,ActivityIndicator, FlatList, Text ,StyleSheet} from 'react-native';
-
+import { View,Image,ActivityIndicator, FlatList, Text ,StyleSheet} from 'react-native';
+import { Button } from 'react-native-paper';
 
 
 
@@ -46,15 +46,22 @@ export const DetailsScreen = ({ navigation }) =>{
               
               <Text style={{fontSize:18}}><Text style={{fontWeight:'bold',fontSize:14}}>Цена: </Text > {item.price} тг</Text>
               <View style={{padding:50}}>
-                <Button
-                color="orange"
-        title="подробнее"
-        onPress={() =>
-          navigation.push('Present', {
-            itemId: item.id,
-          })
-        }
-      />
+ 
+      
+      <Button
+       
+        mode="contained"
+      
+        style={{backgroundColor:'orange',}}
+        icon="arrow-right"
+
+onPress={() =>
+  navigation.navigate('Подарок', {
+    Id: item.id,
+  })
+}>
+      подробнее
+  </Button>
                 </View>
               </View>
               </View>
